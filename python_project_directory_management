@@ -1,0 +1,84 @@
+from tkinter import *
+import tkinter.messagebox as MB
+import mysql.connector as mysql
+
+def insert():
+    id = e_id.get()
+    Name = e_Name.get()
+    age=e_age.get()
+    weight=e_weight.get()
+    blood_group=e_blood_group.get()
+    Phone = e_Phone.get()
+    Doctor = e_Doctor.get()
+    
+    if(id=="" or Name=="" or Phone==""):
+        MB.showinfo("Insert Status", "All fields are required")                                                #MB was taken as a variable for MessageBox which is present in tkinter
+    else:
+        con = mysql.connect(host="localhost", user="root", password="", database="Hospital Management")
+        
+
+root = Tk()                                                                
+root.geometry("800x500")
+root.title("Hospital Management")
+
+id = Label(root, text="Enter Patient's UID", font=("bold", 10))                        
+id.place(x=20, y=30)
+
+Name = Label(root, text="Patient's Name", font=("bold", 10))                       
+Name.place(x=20, y=60)
+
+age=Label(root, text="Patient's age", font=("bold", 10))
+age.place(x=20, y=90)
+
+weight=Label(root, text="Patient's weight", font=("bold", 10))
+weight.place(x=20, y=120)
+
+blood_group=Label(root, text="Patient's blood group", font=("bold", 10))
+blood_group.place(x=20, y=150)
+
+Phone = Label(root, text="Patient's Contact Number", font=("bold", 10))                        
+Phone.place(x=20, y=180)
+
+Doctor = Label(root, text="Doctor assigned", font=("bold", 10))                        
+Doctor.place(x=20, y=210)
+
+Disease = Label(root, text="Disease's Name", font=("bold", 10))                        
+Disease.place(x=20, y=240)
+
+e_id = Entry()                                                                                                  #Entry is present in tkinter used to create a blank space
+e_id.place(x=250, y=30)                                                                                         #Place is present in tkinter used to place anything at any defined position
+
+e_Name = Entry()
+e_Name.place(x=250, y=60)
+
+e_age = Entry()
+e_age.place(x=250, y=90)
+
+e_weight = Entry()
+e_weight.place(x=250, y=120)
+
+e_blood_group= Entry()
+e_blood_group.place(x=250, y=150)
+
+e_Phone = Entry()
+e_Phone.place(x=250, y=180)
+
+e_Doctor = Entry()
+e_Doctor.place(x=250, y=210)
+
+e_Disease = Entry()
+e_Disease.place(x=250, y=240)
+
+insert = Button(root, text="Insert", font=("bold", 10), bg="white", command=insert)                             #Button is present in tkinter can be used to create a button
+insert.place(x=20, y=270)
+
+delete = Button(root, text="Delete", font=("bold", 10), bg="white", command=delete)
+delete.place(x=70, y=200)
+
+update = Button(root, text="Update", font=("bold", 10), bg="white", command=update)
+insert.place(x=120, y=200)
+
+get = Button(root, text="Get", font=("bold", 10), bg="white", command=get)
+insert.place(x=190, y=200)
+
+root.mainloop()
